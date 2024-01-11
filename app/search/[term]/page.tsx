@@ -1,3 +1,6 @@
+import AISuggestion from "@/components/AISuggestion";
+import MoviesCarousel from "@/components/MoviesCarousel";
+import { getPopularMovies, getSearchMovies } from "@/lib/getMovies";
 import { notFound } from "next/navigation";
 import React from "react";
 
@@ -7,16 +10,31 @@ type Props = {
   };
 };
 
-function SearchPage({ params: { term } }: Props) {
+async function SearchPage({ params: { term } }: Props) {
   if (!term) notFound(); // 404 for no search item
 
   // Get rid of space %20
-  const termToUser = decodeURI(term);
+  const termToUse = decodeURI(term);
 
   // API call to get the Searched Movies
-  // API to get the Popular Movies
+  const movies = await getSearchMovies(termToUse);
 
-  return <div>Welcome to the search page: {termToUser}</div>;
+  // API to get the Popular Movies
+  const popularMovies = await getPopularMovies();
+
+  return (
+    <div className="max-w-7xl mx-auto">
+      <div className="flex flex-col space-y-4 mt-32 xl:mt-42">
+        <h1 className="text-6xl font-bold px-10">Results for {termToUse}</h1>
+
+        {/* AI Suggestion */}
+        <AISuggestion term={termToUse} />
+
+        <MoviesCarousel title="Movies" movies={movies} isVertical />
+        <MoviesCarousel title="You may also like" movies={popularMovies} />
+      </div>
+    </div>
+  );
 }
 
 export default SearchPage;
