@@ -1,6 +1,6 @@
 import AISuggestion from "@/components/AISuggestion";
 import MoviesCarousel from "@/components/MoviesCarousel";
-import { getPopularMovies, getSearchMovies } from "@/lib/getMovies";
+import { getPopularMovies, getSearchMovies } from "@/services/getMovies";
 import { notFound } from "next/navigation";
 import React from "react";
 

@@ -1,4 +1,4 @@
-import { getDiscoverMovies } from "@/lib/getMovies";
+import { getDiscoverMovies } from "@/services/getMovies";
 import React from "react";
 import CarouselBanner from "./CarouselBanner";
 

@@ -1,6 +1,6 @@
 import AISuggestion from "@/components/AISuggestion";
 import MoviesCarousel from "@/components/MoviesCarousel";
-import { getDiscoverMovies } from "@/lib/getMovies";
+import { getDiscoverMovies } from "@/services/getMovies";
 import React from "react";
 
 type Props = {

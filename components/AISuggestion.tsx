@@ -1,6 +1,6 @@
 "use client";
 
-import { fetchSuggestion } from "@/lib/getSuggestion";
+import { fetchSuggestion } from "@/services/getSuggestion";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 

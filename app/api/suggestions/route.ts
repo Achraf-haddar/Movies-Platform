@@ -1,9 +1,10 @@
+// In case we use lambda function to get AI Suggestion we expose it as a GET API
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const term = searchParams.get("term");
   
     const res = await fetch(
-      `https://disney2clone.azurewebsites.net/api/getaisuggestion?term=${term}`,
+      `https://lambda_function_url/api/getaisuggestion?term=${term}`,
       {
         method: "GET",
         next: {

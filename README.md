@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Movies Platform
+
+This is a Next.js application that leverages the TMDB API to retrieve movies based on genres and search terms. Additionally, it utilizes the OpenAI API to provide movie suggestions based on the search query.
+
+## Features
+
+### 1. Get Movies by Genre
+
+The application allows users to browse movies based on different genres. Users can select a genre, and the app fetches and displays a list of movies associated with that genre.
+
+### 2. Search Movies by Title
+
+Users can search for movies using a search term. The app sends a request to the TMDB API to fetch relevant movies based on the user's input.
+
+### 3. Movie Suggestions via OpenAI API
+
+Upon entering a search term, the app sends a request to the OpenAI API to get movie suggestions related to the search query. These suggestions are then displayed to the user for a more personalized movie discovery experience.
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Achraf-haddar/Movies-Platform.git
+```
+
+2. Install dependencies:
+
+```bash
+cd Movies-Platform
+npm install
+```
+
+3. Set up environment variables:
+
+   Create a .env.local file in the root of the project and add your TMDB API key and OpenAI API key (you can follow .env.local.example):
+
+```bash
+TMDB_API_KEY=your_tmdb_api_key
+NEXT_PUBLIC_OPENAI_API_KEY=your_openai_api_key
+```
+
+4. Run the application:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open the application:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   You can access the application in the browser via http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Technologies Used
 
-## Learn More
+- Next.js
+- React.js
+- Tailwind CSS
+- Shadcn/ui
 
-To learn more about Next.js, take a look at the following resources:
+## Screenshots:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![alt Home Interface 1](./screenshots/homeInterface1.PNG "Home Interface 1")
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![alt Home Interface 2](./screenshots/homeInterface2.PNG "Home Interface 2")
 
-## Deploy on Vercel
+![alt Filters](./screenshots/filters.PNG "Filters")
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![alt Results for Action Movies](./screenshots/resultsForFilterByActionGenre.PNG "Results for Action Movies")
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![alt Results for Star Wars Movies](./screenshots/resultsForStarWars.PNG "Results for Star Wars Movies")
