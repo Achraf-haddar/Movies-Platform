@@ -1,5 +1,25 @@
+// import { LRUCache } from "lru-cache";
+
+// Initialize a cache with a maximum size
+// const cache = new LRUCache({ max: 100, ttl: 1000 * 60 * 5 });
+
 export async function fetchSuggestion(term: string) {
     try{
+      // Server Side Caching won't work since the fetch is done in a client side component
+      // Check if the result is already in the cache
+      // const cachedResult = cache.get(term);
+      // if (cachedResult) {
+      //   console.log("Result fetched from cache");
+      //   return cachedResult;
+      // }
+      // >>> We proceed with client side caching using local storage
+      // Check if the result is already in local storage
+      const cachedResult = localStorage.getItem(term);
+      if (cachedResult) {
+        console.log("Result fetched from local storage");
+        return cachedResult;
+      }
+
       const { OpenAI } = await import("openai");
   
       const apiKey = `${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`;
@@ -22,9 +42,17 @@ export async function fetchSuggestion(term: string) {
       ],
       model: "gpt-3.5-turbo",
     });  
-    console.log(completion.choices[0]);
+
+    const result: any = completion.choices[0].message.content;
+
+    // Cache the result for future use
+    // cache.set(term, result);
+
+    // Cache the result in local storage
+    localStorage.setItem(term, result);
+
   
-    return completion.choices[0].message.content;
+    return result;
   } catch(error) {
     console.log(error)
   }
